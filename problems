@@ -1,0 +1,37 @@
+//Monk and Rotation
+
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	int n,k,t,i,j,temp;
+	scanf("%d",&t);
+	while(t>0){
+		scanf("%d%d",&n,&k);
+		if(k>=n){
+			k%=n;
+		}
+		int* arr=(int*)malloc(n*sizeof(arr));
+		int* arr1=(int*)malloc(n*sizeof(arr1));
+		for(i=0;i<n;i++){
+			scanf("%d",arr+i);
+		}
+		for(j=0,i=n-k;i<n;++j,++i){
+			*(arr1+j)=*(arr+i);
+		}
+		for(i=(n-1);i>k-1;i--){
+			*(arr+i)=*(arr+i-k);
+		}
+		for(i=0;i<k;++i){
+			*(arr+i)=*(arr1+i);
+		}
+		printf("\n");
+		for(int i=0;i<n;i++){
+			printf("%d ",*(arr+i));
+		}
+		free(arr);
+		free(arr1);
+		t--;
+	}
+}
